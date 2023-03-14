@@ -18,7 +18,8 @@ const options = {
 app.use("/cms/restaurant", RestaurantRoute);
 app.use('/cms/restaurant/menu', MenuRoute);
 
-const connectAPP = "mongodb+srv://cms:client@cluster0.x5iici2.mongodb.net/cmsdb";
+// mongodb+srv://cms:client@cluster0.x5iici2.mongodb.net/cmsdb
+const connectAPP = process.env.MONGODB_URL;
 
 mongoose
     .connect(connectAPP, {
