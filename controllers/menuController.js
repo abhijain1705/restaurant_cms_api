@@ -32,7 +32,7 @@ module.exports.addItem = async (req, res) => {
 };
 
 module.exports.getRestaurantMenu = async (req, res) => {
-    const { restaurantId } = req.body;
+    const { restaurantId } = req.params;
     try {
         let menu = await Menu.findOne({ restaurantId: restaurantId });
         res.status(200).json({ message: 'menu sent', menu: menu });
