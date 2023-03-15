@@ -3,20 +3,19 @@ const mongoose = require("mongoose");
 const RestaurantRoute = require("./routes/restaurantRoute");
 const MenuRoute = require("./routes/menuRoute");
 const app = express();
+
+
 require('dotenv').config();
 const cors = require('cors');
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors());
-
-const options = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-};
 
 app.use("/cms/restaurant", RestaurantRoute);
 app.use('/cms/restaurant/menu', MenuRoute);
+app.use(express.static('public'));
+
 
 // mongodb+srv://cms:client@cluster0.x5iici2.mongodb.net/cmsdb
 const connectAPP = process.env.MONGODB_URL;

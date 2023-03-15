@@ -1,7 +1,7 @@
 const UserSchema = require("../models/restaurantModule");
+const { v4: uuidv4 } = require('uuid');
 const crypto = require('crypto');
 const emailValidator = require('email-validator');
-const { v4: uuidv4 } = require('uuid');
 
 module.exports.AddUser = async (req, res) => {
 
