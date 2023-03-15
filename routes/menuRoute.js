@@ -3,7 +3,7 @@ const routes = express.Router();
 const { addItem, removeItem, getRestaurantMenu } = require("../controllers/menuController");
 
 
-routes.post("/remove", removeImage, removeItem);
+routes.post("/remove", removeItem);
 routes.get('/restaurantMenu', getRestaurantMenu);
 
 // Add error handling middleware for the /addOrUpdate route
