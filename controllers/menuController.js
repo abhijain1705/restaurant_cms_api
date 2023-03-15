@@ -4,21 +4,18 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports.addItem = async (req, res) => {
 
-    const obj = JSON.parse(JSON.stringify(req.body))
-    const { restaurantId, items } = obj;
-    const { filename } = req.file;
+    const { restaurantId, items } = req.body;
 
     try {
-        if (!filename || !restaurantId || !items) {
+        if (!restaurantId || !items) {
             res.status(401).json({ error: "feilds are not recieved" });
             return;
         }
 
         let menu = await Menu.findOne({ restaurantId: restaurantId });
-        let tempItems = JSON.parse(items);
+        let tempItems = items;
         const foodId = uuidv4();
         tempItems.foodId = foodId;
-        tempItems.image = filename;
 
         if (!menu) {
             // If menu doesn't exist, create a new one with the restaurantId
