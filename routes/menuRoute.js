@@ -4,7 +4,7 @@ const { addItem, removeItem, getRestaurantMenu } = require("../controllers/menuC
 
 
 routes.post("/remove", removeItem);
-routes.get('/restaurantMenu/:restaurantId/', getRestaurantMenu);
+routes.get('/restaurantMenu/:restaurantId/:page', getRestaurantMenu);
 
 // Add error handling middleware for the /addOrUpdate route
 routes.post("/addOrUpdate", addItem);
