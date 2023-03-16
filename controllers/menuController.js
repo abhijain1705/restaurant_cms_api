@@ -32,15 +32,18 @@ module.exports.addItem = async (req, res) => {
 };
 
 module.exports.getRestaurantMenu = async (req, res) => {
-    const { restaurantId } = req.params;
+    const { restaurantId, page } = req.params;
+    const limit = 5;
+    const skip = (page - 1) * limit;
+
     try {
-        let menu = await Menu.findOne({ restaurantId: restaurantId });
+        let menu = await Menu.findOne({ restaurantId: restaurantId }, { items: { $slice: [skip, limit + skip] } });
         res.status(200).json({ message: 'menu sent', menu: menu });
     } catch (error) {
-
         res.status(500).json({ success: false, error: 'Something went wrong' });
     }
 }
+
 
 module.exports.removeItem = async (req, res) => {
     const { restaurantId, foodId } = req.body;
