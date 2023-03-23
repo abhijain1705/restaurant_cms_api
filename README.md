@@ -21,7 +21,7 @@ To install and run this project locally, follow these steps:
 
 ## Usage
 
-This project provides endpoints for user signup, login, forgot password, and password update functionality. Users can create an account, log in with their credentials, and reset their password if necessary.
+This project provides endpoints for user signup, login functionality. Users can create an account, log in with their credentials, and reset their password if necessary.
 
 To use this API, make HTTP requests to the appropriate endpoints using a tool like Postman or a similar application.
 
