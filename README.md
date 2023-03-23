@@ -1,4 +1,4 @@
-# HomeLLC Backend Assignment
+# Reastaurant CMS Backend
 
 This project is a backend implementation for user authentication and password reset functionality. The API is built with Node.js, Express, MongoDB, and Nodemailer.
 
@@ -27,43 +27,59 @@ To use this API, make HTTP requests to the appropriate endpoints using a tool li
 
 ## API Endpoints
 
-- `POST /homellc/users/signup`: Create a new user account. Send a JSON object with the following fields in the request body:
+- `POST /cms/restaurant/signup`: Create a new user account. Send a JSON object with the following fields in the request body:
 
 ```json
 {
-  "firstName": "james",
-  "lastName": "bond",
-  "email": "jamesbond007@gmail.com",
-  "phoneNumber": "+919876543210",
-  "dateOfJoining": "2023-03-08T17:58:21.964Z",
-  "password": "yourpassword"
+    "restaurantName": "The Latin Place",
+    "address": "Street 21",
+    "city": "New York",
+    "state": "New York",
+    "country": "USA",
+    "name": "Sam Martin",
+    "email": "same.martion22@gmail.com",
+    "password": "******",
+    "uniqueId": "3412r4fewr324dcdscw"
 }```
 
 
-- `POST /homellc/users/login`: Log in to an existing user account. Send a JSON object with the following fields in the request body:
+- `POST /cms/restaurant/login`: Log in to an existing user account. Send a JSON object with the following fields in the request body:
 ```json
 {
   "email": "jamesbond007@gmail.com",
-  "password": "yourpassword"
+  "password": "yourpassword",
+  "remember": true
 }```
 
 
-- `POST /homellc/passwords/forgot-password`: Send an email to the user with a link to reset their password. Send a JSON object with the following fields in the request body:
+- `POST /cms/restaurant/remove`: Remove Item from Menu:
 ```json
 {
-  "firstName": "james",
-  "lastName": "bond",
-  "email": "jamesbond007@gmail.com",
-  "phoneNumber": "+919876543210",
-  "createdAt": "2023-03-08T17:58:21.964Z"
+  "restaurantId": "3412r4fewr324dcdscw",
+  "foodId": "fqerbgwrbvr435",
 }```
 
 
-- `POST /homellc/passwords/reset-password/:token`: Reset a user's password using a token sent to their email address. Send a JSON object with the following fields in the request body:
+- `GET /cms/restaurant/restaurantMenu/:restaurantId/`: get menus from restaurant by it's id:
 ```json
 {
-  "email": "jamesbond007@gmail.com",
-  "password": "newmission"
+  "restaurantId": "3412r4fewr324dcdscw",
+}```
+
+- `POST /cms/restaurant/addOrUpdate`: Add Item from Menu:
+```json
+{
+  "restaurantId": "3412r4fewr324dcdscw",
+    "items": [{
+        name: "pizza",
+        description: "super delicious",
+        price: 212,
+        image: "image-link",
+        category: "fast food",
+        flavour: "Marghenta",
+        foodId: "fqerbgwrbvr435",
+        parent: "pizza",
+    }]
 }```
 
 ## Technologies Used
@@ -76,6 +92,7 @@ This project uses the following technologies:
 - Mongoose
 - Nodemailer
 - JSON Web Tokens
+- firebase
 
 ## Contributing
 
